@@ -18,8 +18,148 @@ body {
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 /*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
+* Additional CSS can be defined below or in other CSS files, as per instructions
+*/
+nav {
+  font-family: 'Bungee', cursive;
+  position: fixed;
+  top: 0;
+ }
+
+ .display {
+   margin-top: 5em;
+}
+
+.container {
+  width: 100%;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-bottom: 2em;
+}
+
+#container-for-new-tweets {
+  box-sizing: border-box;
+}
+
+
+.error {
+  border: solid;
+  border-color: red;
+  color: red;
+  height: fit-content;
+  width: fit-content;
+  font-size: large;
+  align-self: flex-end;
+  text-align: center;
+}
+
+article {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border: solid;
+  
+}
+
+article:hover {
+  box-shadow: 10px 10px 5px #888;
+}
+
+label.humming {
+  display: inline;
+}
+
+label {
+  display: none;
+}
+
+article:hover label {
+  display: block;
+  color: #888;
+}
+
+article>div#header {
+  display: flex;
+  justify-content: space-between;
+}
+
+article>div#header>img {
+  border-style: none;
+  width: 80px;
+  height: 80px;
+}
+
+article>div#header>div {
+  display: inherit;
+}
+
+article>div#header>div>p {
+  padding-left: 0.5em;
+}
+
+footer {
+  font-size: medium;
+  border-top: solid;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+footer>div {
+  padding-top: 1em;
+  display: inherit;
+  color: #4056A1;
+}
+
+.gg-flag {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(var(--ggs,1));
+  width: 22px;
+  height: 18px;
+  border-left: 2px solid
+}
+.gg-flag::after,
+.gg-flag::before {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  width: 8px;
+  height: 8px
+}
+.gg-flag::before {
+  border-top: 2px solid;
+  border-bottom: 2px solid
+}
+.gg-flag::after {
+  border: 2px solid;
+  border-left: 0;
+  top: 2px;
+  left: 7px
+}
+
+i.fa.fa-retweet {
+  padding-left: 0.5em;
+  padding-right: 1em;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    width: 66.7%;
+    float: right
+  }
+  header {
+    margin-left: 1.7em;
+    float: left;
+  }
+  .display {
+    margin-top: 7em;
+  }
+}
