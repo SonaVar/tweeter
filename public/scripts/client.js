@@ -96,7 +96,7 @@ const createTweetElement = function (data) {
       </div>
       <p>${escape(data.content.text)}</p>
       <footer>
-        <p>${data.created_at}</p>
+        <p>${moment().startOf('second').fromNow(data.created_at)} ago</p>
         <div>
           <i class="gg-flag"></i>
           <i class="fa fa-retweet"></i>
