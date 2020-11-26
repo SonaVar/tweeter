@@ -44,6 +44,7 @@ $(document).ready(() => {
     }
   };
 
+    
   //script runs on "TWEET" button click. Once tweet is submitted the below actions take place:
     //1. counter is reset to 140
     //2. input is checked for errors by calling the 'validator' function
@@ -53,6 +54,7 @@ $(document).ready(() => {
   $('form').on('submit', event => {
     event.preventDefault();
     $('.counter').val(140);
+    $('#container-for-new-tweets').empty();
     const bool = validator($('#tweet-text').val());
     if(!bool) {
       $('.error').slideUp();
@@ -83,6 +85,35 @@ const escape =  function(str) {
 
 //function creates a new article and loads the data into each html element
 const createTweetElement = function (data) {
+
+  function timeDifference(current, previous) {
+    var msPerMinute = 60 * 1000;
+    var msPerHour = msPerMinute * 60;
+    var msPerDay = msPerHour * 24;
+    var msPerMonth = msPerDay * 30;
+    var msPerYear = msPerDay * 365;
+
+    var elapsed = current - previous;
+
+    if (elapsed < msPerMinute) {
+      return Math.round(elapsed/1000) + ' seconds ago';   
+    }
+    else if (elapsed < msPerHour) {
+     return Math.round(elapsed/msPerMinute) + ' minutes ago';   
+    }
+    else if (elapsed < msPerDay ) {
+      return Math.round(elapsed/msPerHour ) + ' hours ago';   
+    }
+    else if (elapsed < msPerMonth) {
+      return 'approximately ' + Math.round(elapsed/msPerDay) + ' days ago';   
+    }
+    else if (elapsed < msPerYear) {
+      return 'approximately ' + Math.round(elapsed/msPerMonth) + ' months ago';   
+    }
+    else {
+      return 'approximately ' + Math.round(elapsed/msPerYear ) + ' years ago';   
+    }
+}
   const tweet = $(
     `<article class="tweet">
       <div id="header">
@@ -96,7 +127,7 @@ const createTweetElement = function (data) {
       </div>
       <p>${escape(data.content.text)}</p>
       <footer>
-        <p>${moment().startOf('second').fromNow(data.created_at)} ago</p>
+        <p>${timeDifference(new Date().getTime(), data.created_at)}</p>
         <div>
           <i class="gg-flag"></i>
           <i class="fa fa-retweet"></i>
